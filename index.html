@@ -1,86 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>18+ Offer</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-      color: white;
-      background: url('https://xporn-gifs.com/wp-content/uploads/2025/02/POV-Gifs-22577266.gif') no-repeat center center fixed;
-      background-size: cover;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      position: relative;
-    }
-    .overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: url('') no-repeat center center;
-      background-size: contain;
-      opacity: 0.6;
-      z-index: 0;
-    }
-    .container {
-      background-color: rgba(0, 0, 0, 0.7);
-      padding: 20px;
-      border-radius: 15px;
-      text-align: center;
-      max-width: 90%;
-      width: 400px;
-      z-index: 1;
-    }
-    button {
-      padding: 10px 20px;
-      margin-top: 15px;
-      font-size: 16px;
-      border: none;
-      border-radius: 5px;
-      background-color: crimson;
-      color: white;
-      cursor: pointer;
-    }
-    .hidden {
-      display: none;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Step 1</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: url('https://russmus.net/wp-content/uploads/2024/02/big-tits-gifs-26.gif') no-repeat center center fixed;
+            background-size: cover;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 500px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .container h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .container p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+
+        .button {
+            display: inline-block;
+            background: #007bff;
+            color: #ffffff;
+            padding: 12px 25px;
+            font-size: 1.2em;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+
+        .button:hover {
+            background: #0056b3;
+        }
+    </style>
 </head>
 <body>
-  <div class="overlay"></div>
-
-  <div class="container" id="step1">
-    <h2>What's Your Gender</h2>
-    <button onclick="nextStep('male')">Male</button>
-    <button onclick="nextStep('female')">Female</button>
-  </div>
-
-  <div class="container hidden" id="step2">
-    <h2>I am over 18+</h2>
-    <button onclick="nextStep2()">Yes</button>
-  </div>
-
-  <div class="container hidden" id="step3">
-    <h2>HoceTo</h2>
-    <button onclick="window.location.href='https://tinyurl.com/yncuz787'">START</button>
-  </div>
-
-  <script>
-    function nextStep(gender) {
-      document.getElementById('step1').classList.add('hidden');
-      document.getElementById('step2').classList.remove('hidden');
-    }
-    function nextStep2() {
-      document.getElementById('step2').classList.add('hidden');
-      document.getElementById('step3').classList.remove('hidden');
-    }
-  </script>
+    <div class="container">
+        <h1>Step 1: Welcome</h1>
+        <p>Click the button below to proceed to the next step.</p>
+        <a href="step2.html" class="button">Proceed to Step 2</a>
+    </div>
 </body>
 </html>
