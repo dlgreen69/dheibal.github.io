@@ -30,27 +30,8 @@
     </section>
     <section class="games-grid">
       <h2>Featured Games</h2>
-      <div class="grid">
-        <div class="game-card">
-          <img src="game1.jpg" alt="Game 1">
-          <h3>Fortune Spin</h3>
-          <button>Play</button>
-        </div>
-        <div class="game-card">
-          <img src="game2.jpg" alt="Game 2">
-          <h3>Lucky Slots</h3>
-          <button>Play</button>
-        </div>
-        <div class="game-card">
-          <img src="game3.jpg" alt="Game 3">
-          <h3>Roulette Royale</h3>
-          <button>Play</button>
-        </div>
-        <div class="game-card">
-          <img src="game4.jpg" alt="Game 4">
-          <h3>Poker Pro</h3>
-          <button>Play</button>
-        </div>
+      <div class="grid" id="games-list">
+        <!-- Games will be rendered here by JavaScript -->
       </div>
     </section>
   </main>
@@ -61,5 +42,31 @@
       <a href="#">Privacy Policy</a>
     </div>
   </footer>
+  
+  <!-- Game Modal -->
+  <div id="game-modal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="modal-close">&times;</span>
+      <img id="modal-game-image" src="" alt="Game Image">
+      <h3 id="modal-game-title"></h3>
+      <p id="modal-game-description"></p>
+      <button id="start-game-btn">Start Game</button>
+    </div>
+  </div>
+  
+  <!-- Game Screen Modal -->
+  <div id="game-screen-modal" class="modal">
+    <div class="modal-content game-screen-content">
+      <span class="close" id="game-screen-close">&times;</span>
+      <div id="game-screen">
+        <!-- The demo game will appear here -->
+        <h2>Game is Running!</h2>
+        <p>This is a demo game screen for <span id="game-screen-title"></span>.</p>
+        <button onclick="alert('You won!')">Simulate Win</button>
+      </div>
+    </div>
+  </div>
+  
+  <script src="games.js"></script>
 </body>
 </html>
