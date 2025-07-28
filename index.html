@@ -4,69 +4,110 @@
   <meta charset="UTF-8">
   <title>7Gain Game Portal</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles.css">
+  <style>
+    body { background: #181d29; color: #fff; font-family: Arial, sans-serif; margin: 0; }
+    header, footer { background: #22273a; padding: 16px; text-align: center; }
+    .logo { font-size: 2em; color: #4ce9a6; margin-bottom: 12px; }
+    .games-grid { max-width: 700px; margin: 30px auto; }
+    .grid { display: flex; flex-wrap: wrap; gap: 24px; justify-content: center; }
+    .game-card { background: #22273a; border-radius: 12px; padding: 18px; width: 180px; text-align: center; }
+    .game-card h3 { margin: 10px 0; }
+    .game-card button { background: #4ce9a6; color: #22273a; border: none; padding: 10px 18px; border-radius: 8px; cursor: pointer; }
+    /* Modal styles */
+    .modal { display: none; position: fixed; top: 0; left: 0; width:100vw; height:100vh; background:rgba(24,29,41,0.85); justify-content: center; align-items: center; }
+    .modal-content { background: #22273a; color:#fff; border-radius: 12px; padding: 24px; max-width:320px; text-align:center; position:relative; }
+    .close { position: absolute; top: 8px; right: 14px; font-size: 2em; color:#fff; cursor:pointer; }
+  </style>
 </head>
 <body>
   <header>
-    <div class="logo">
-      <img src="logo.png" alt="7Gain Logo">
-      <span>7Gain</span>
-    </div>
-    <nav>
-      <ul>
-        <li><a href="#" class="active">Home</a></li>
-        <li><a href="#">Games</a></li>
-        <li><a href="#">Promotions</a></li>
-        <li><a href="#">Support</a></li>
-        <li><a href="#">Login</a></li>
-      </ul>
-    </nav>
+    <div class="logo">7Gain</div>
+    Welcome to 7Gain Game Portal
   </header>
   <main>
-    <section class="banner">
-      <h1>Welcome to 7Gain Game Portal</h1>
-      <p>Play the hottest online games and win big!</p>
-      <a href="#" class="cta-button">Play Now</a>
-    </section>
     <section class="games-grid">
       <h2>Featured Games</h2>
-      <div class="grid" id="games-list">
-        <!-- Games will be rendered here by JavaScript -->
-      </div>
+      <div class="grid" id="games-list"></div>
     </section>
   </main>
   <footer>
-    <div class="footer-content">
-      <span>&copy; 2025 7Gain. All rights reserved.</span>
-      <a href="#">Terms of Service</a>
-      <a href="#">Privacy Policy</a>
-    </div>
+    &copy; 2025 7Gain. All rights reserved.
   </footer>
-  
   <!-- Game Modal -->
   <div id="game-modal" class="modal">
     <div class="modal-content">
       <span class="close" id="modal-close">&times;</span>
-      <img id="modal-game-image" src="" alt="Game Image">
       <h3 id="modal-game-title"></h3>
       <p id="modal-game-description"></p>
       <button id="start-game-btn">Start Game</button>
     </div>
   </div>
-  
   <!-- Game Screen Modal -->
   <div id="game-screen-modal" class="modal">
-    <div class="modal-content game-screen-content">
+    <div class="modal-content">
       <span class="close" id="game-screen-close">&times;</span>
-      <div id="game-screen">
-        <!-- The demo game will appear here -->
-        <h2>Game is Running!</h2>
-        <p>This is a demo game screen for <span id="game-screen-title"></span>.</p>
-        <button onclick="alert('You won!')">Simulate Win</button>
-      </div>
+      <h2>Game is Running!</h2>
+      <p>This is a demo for <span id="game-screen-title"></span>.</p>
+      <button onclick="alert('You won!')">Simulate Win</button>
     </div>
   </div>
-  
-  <script src="games.js"></script>
+  <script>
+    // Demo game data
+    const games = [
+      { title: "Fortune Spin", description: "Spin the wheel and test your luck." },
+      { title: "Lucky Slots", description: "Classic slot machine action." },
+      { title: "Roulette Royale", description: "Place your bets and watch the ball spin." }
+    ];
+    function renderGames() {
+      const grid = document.getElementById('games-list');
+      grid.innerHTML = "";
+      games.forEach((game, idx) => {
+        const card = document.createElement('div');
+        card.className = "game-card";
+        card.innerHTML = `
+          <h3>${game.title}</h3>
+          <button data-idx="${idx}">Play</button>
+        `;
+        grid.appendChild(card);
+      });
+    }
+    function showModal(game) {
+      document.getElementById("modal-game-title").textContent = game.title;
+      document.getElementById("modal-game-description").textContent = game.description;
+      document.getElementById("game-modal").style.display = "flex";
+      window.currentGame = game;
+    }
+    function closeModal() {
+      document.getElementById("game-modal").style.display = "none";
+    }
+    function showGameScreen(game) {
+      document.getElementById("game-screen-title").textContent = game.title;
+      document.getElementById("game-modal").style.display = "none";
+      document.getElementById("game-screen-modal").style.display = "flex";
+    }
+    function closeGameScreen() {
+      document.getElementById("game-screen-modal").style.display = "none";
+    }
+    window.onload = function() {
+      renderGames();
+      document.getElementById('games-list').addEventListener('click', function(e) {
+        if (e.target.tagName === "BUTTON") {
+          const idx = e.target.getAttribute('data-idx');
+          showModal(games[idx]);
+        }
+      });
+      document.getElementById("modal-close").onclick = closeModal;
+      document.getElementById("game-screen-close").onclick = closeGameScreen;
+      document.getElementById("start-game-btn").onclick = function() {
+        showGameScreen(window.currentGame);
+      };
+      document.getElementById("game-modal").onclick = function(e) {
+        if (e.target === this) closeModal();
+      };
+      document.getElementById("game-screen-modal").onclick = function(e) {
+        if (e.target === this) closeGameScreen();
+      };
+    };
+  </script>
 </body>
 </html>
